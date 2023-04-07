@@ -4,17 +4,33 @@ export class Background {
   width = 930
   speed = 100 // 30px/s
 
-  constructor() {}
-
   /**
    * Description
    * @param {CanvasRenderingContext2D} ctx
    */
-  draw(ctx) {}
+  constructor(ctx) {
+    this.image = new Image()
+    this.image.src = './assets/img/background-930x360.jpg'
+
+    this.ctx = ctx
+  }
+
+  draw() {
+    this.ctx.drawImage(this.image, this.destinationX, this.destinationY)
+
+    this.ctx.drawImage(
+      this.image,
+      this.destinationX + this.width,
+      this.destinationY
+    )
+  }
 
   /**
    * Description
    * @param {number} deltaTime Laps de temps écoulé depuis le dernier update
    */
-  update(deltaTime) {}
+  update(deltaTime) {
+    this.destinationX -= (deltaTime * this.speed) / 1000
+    if (this.destinationX <= -this.width) this.destinationX = 0
+  }
 }
