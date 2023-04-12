@@ -1,9 +1,9 @@
 import { Background } from './background.js'
+import { Player } from './player.js'
 
 export class Game {
   score = 0
   gameOver = false
-  lastTimeStamp = 0
 
   constructor() {
     /** @type {HTMLCanvasElement} */
@@ -15,6 +15,9 @@ export class Game {
 
     this.background = new Background(this.ctx)
 
+    this.player = new Player(this.ctx)
+
+    this.lastTimeStamp = 0
     this.animate(0)
   }
 
@@ -29,6 +32,9 @@ export class Game {
 
     this.background.draw()
     this.background.update(deltaTime)
+
+    this.player.draw()
+    this.player.update(timeStamp)
 
     window.requestAnimationFrame(this.animate)
   }
