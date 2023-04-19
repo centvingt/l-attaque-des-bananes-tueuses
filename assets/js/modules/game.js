@@ -1,4 +1,5 @@
 import { Background } from './background.js'
+import { InputHandler } from './input-handler.js'
 import { Player } from './player.js'
 
 export class Game {
@@ -13,9 +14,11 @@ export class Game {
 
     this.ctx = this.canvas.getContext('2d')
 
+    this.inputHandler = new InputHandler()
+
     this.background = new Background(this.ctx)
 
-    this.player = new Player(this.ctx)
+    this.player = new Player(this)
 
     this.lastTimeStamp = 0
     this.animate(0)
