@@ -1,4 +1,5 @@
 import { Background } from './background.js'
+import { BananaSkinPool } from './banana-skin/banana-skin-pool.js'
 import { InputHandler } from './input-handler.js'
 import { Player } from './player.js'
 
@@ -20,6 +21,8 @@ export class Game {
 
     this.player = new Player(this)
 
+    this.bananaSkinPool = new BananaSkinPool(this)
+
     this.lastTimeStamp = 0
     this.animate(0)
   }
@@ -35,6 +38,8 @@ export class Game {
 
     this.background.draw()
     this.background.update(deltaTime)
+
+    this.bananaSkinPool.render(timeStamp, deltaTime)
 
     this.player.draw()
     this.player.update(timeStamp)

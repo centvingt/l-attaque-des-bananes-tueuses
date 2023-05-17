@@ -1,6 +1,6 @@
-import { Game } from './game.js'
+import { Game } from '../game.js'
 
-export class Banana {
+export class BananaSkin {
   sourceX = 0
   sourceY = 0
 
@@ -24,6 +24,11 @@ export class Banana {
     this.frameHeight = 54
 
     this.reset()
+  }
+
+  render = (timeStamp, deltaTime) => {
+    this.draw()
+    this.update(timeStamp, deltaTime)
   }
 
   draw() {
